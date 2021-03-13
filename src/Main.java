@@ -1,19 +1,18 @@
-import java.math.BigDecimal;
-
 public class Main {
     public static void main(String[] args) {
 
-        CreditPaymentService service = new CreditPaymentService();
-        double payment = service.calculate(1_000_000, 9.99, 12);
-        System.out.printf("%.2f%n", payment);
+        int credit = 1_000_000;
+        double percent = 9.99;
+        int[] months = {12, 24, 36};
 
-        CreditPaymentService service2 = new CreditPaymentService();
-        double payment2 = service.calculate(1_000_000, 9.99, 24);
-        System.out.printf("%.2f%n", payment2);
+        for (int month : months) {
+            CreditPaymentService service = new CreditPaymentService();
+            double monthlyPayment = service.calculate(credit, percent, month);
+            System.out.printf("%.2f%n", monthlyPayment);
+        }
 
-        CreditPaymentService service3 = new CreditPaymentService();
-        double payment3 = service.calculate(1_000_000, 9.99, 36);
-        System.out.printf("%.2f", payment3);
     }
 
 }
+
+
